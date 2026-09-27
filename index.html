@@ -51,7 +51,7 @@
       background:rgba(247,244,235,.82);backdrop-filter:blur(16px);
       z-index:10;box-shadow:0 6px 24px rgba(22,75,55,.08)
     }
-    .brand{display:flex;align-items:center;gap:8px;font-family:'Space Grotesk';font-weight:700;letter-spacing:-.03em;font-size:14px}
+    .brand{white-space:nowrap;display:flex;align-items:center;gap:8px;font-family:'Space Grotesk';font-weight:700;letter-spacing:-.03em;font-size:14px}
     .brand-mark{
       width:24px;height:24px;border-radius:50% 50% 50% 6px;background:var(--lime);
       display:grid;place-items:center;color:var(--green);font-size:12px;transform:rotate(-20deg)
@@ -59,7 +59,7 @@
     .brand-mark span{transform:rotate(20deg)}
     .navlinks{display:flex;gap:18px;font-size:12px;color:var(--muted)}
     .navlinks a:hover{color:var(--green)}
-    .nav-cta{background:var(--green);color:white;padding:8px 14px;border-radius:999px;font-size:12px;font-weight:600}
+    .nav-cta{white-space:nowrap;background:var(--green);color:white;padding:8px 14px;border-radius:999px;font-size:12px;font-weight:600}
 
     .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
@@ -86,9 +86,9 @@
     .hero h1{font-family:'Space Grotesk';font-size:clamp(3rem,7vw,7.5rem);line-height:.86;letter-spacing:-.08em;margin:0 0 24px;color:var(--green);max-width:100%;overflow-wrap:anywhere}
     .hero h1 em{font-style:normal;color:var(--terracotta);display:block;margin-left:.2em}
     .hero-copy{max-width:480px;color:var(--muted);font-size:16px;line-height:1.6}
-    .actions{display:flex;gap:10px;align-items:center;margin-top:28px}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:28px}
     .button{
-      display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 18px;
+      white-space:nowrap;display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 18px;
       background:var(--green);color:#fff;font-weight:600;font-size:13px;
       transition:.2s transform,.2s box-shadow
     }
@@ -114,8 +114,8 @@
     .pack:before{content:'';position:absolute;inset:0 0 auto;height:10px;background:#d8bd75;border-radius:14px 14px 0 0}
     .pack:after{content:'';position:absolute;inset:14px;border:1px solid rgba(22,75,55,.25);border-radius:10px;pointer-events:none}
     @keyframes float{50%{transform:rotate(5deg) translateY(-8px)}}
-    .pack small{font-size:8px;letter-spacing:.15em;font-weight:700}
-    .pack h3{font-family:'Space Grotesk';font-size:32px;line-height:.9;letter-spacing:-.07em;margin:55px 0 10px;max-width:140px}
+    .pack small{display:block;max-width:calc(100% - 44px);font-size:8px;letter-spacing:.15em;font-weight:700;line-height:1.5}
+    .pack h3{font-family:'Space Grotesk';font-size:32px;line-height:.95;letter-spacing:-.07em;margin:55px 0 14px;max-width:150px}
     .pack p{font-size:10px;max-width:130px;line-height:1.4}
 
     /* Quality badge on pack */
@@ -172,7 +172,7 @@
     .problem{display:grid;grid-template-columns:1fr 1fr;gap:8px}
     .frame{position:relative;padding:18px;border:1px solid var(--line);background:var(--paper);border-radius:18px;overflow:hidden}
     .frame:before{content:'';position:absolute;inset:7px;border:1px solid rgba(22,75,55,.08);border-radius:16px;pointer-events:none}
-    .problem .frame:first-child{background:var(--terracotta);color:#fff7ed;min-height:280px}
+    .problem .frame:first-child{background:var(--terracotta);color:#fff7ed;min-height:280px;padding-bottom:110px}
     .problem .frame:first-child .kicker{color:#ffd696}
     .frame h3{font-family:'Space Grotesk';font-size:26px;letter-spacing:-.05em;margin:20px 0 12px}
     .frame p{line-height:1.6;color:var(--muted);font-size:15px}
@@ -314,7 +314,7 @@
     dialog.lightbox button{position:absolute;top:-14px;right:-6px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;color:var(--green);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.3)}
 
     @media(min-width:900px){
-      .label-track{overflow:visible;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding-bottom:0}
+      .label-track{overflow:visible;display:grid;grid-template-columns:repeat(2,minmax(0,360px));justify-content:center;gap:24px;padding-bottom:0}
       .label-track li{flex:none}
       .labels-head span{display:none}
     }
@@ -323,18 +323,18 @@
       .tiles.minerals{grid-template-columns:repeat(2,minmax(0,1fr))}
     }
     @media(max-width:520px){
-      .tiles.macros{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-      .tiles.macros .tile{padding:12px}
-      .tiles.macros .tile .chip{margin-bottom:14px}
+      .tiles.macros{grid-template-columns:minmax(0,1fr);gap:8px}
+      .tiles.macros .tile{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;padding:12px 16px}
+      .tiles.macros .tile .chip{margin:0}
+      .tiles.macros .tile .val{margin:0}
       .servings{grid-template-columns:repeat(8,1fr);gap:6px;max-width:320px}
       .legend{grid-template-columns:minmax(0,1fr)}
       .how{grid-template-columns:minmax(0,1fr)}
       .how li{display:flex;align-items:center;gap:12px}
-      .how b{margin:0;min-width:2.4ch}
+      .how b{margin:0;min-width:4.6rem;white-space:nowrap}
       .card{padding:16px}
       .toggle button{padding:8px 12px;font-size:12px}
     }
-    @media(max-width:360px){.tiles.macros{grid-template-columns:minmax(0,1fr)}}
 
     /* Team */
     .team{background:#e6d7bc;max-width:none;padding:60px max(5vw,20px)}
@@ -375,8 +375,7 @@
       .actions{justify-content:center}
       .hero-art{min-height:340px}
       .blob{width:260px;height:260px}
-      .pack{width:180px;height:230px}
-      .pack h3{font-size:24px;margin:35px 0 6px}
+      .pack h3{font-size:26px}
       .problem,.compare{grid-template-columns:1fr}
       .ingredient-grid{grid-template-columns:1fr 1fr}
       .steps{grid-template-columns:1fr}
@@ -389,16 +388,27 @@
       .ingredients,.team{padding:50px max(5vw,20px)}
       .final{padding-block:65px}
       .pack-badge{width:48px;height:48px;top:-10px;right:-10px}
+      .hero-art:after{display:none}
+      .hero-art{min-height:380px}
+      .blob{width:280px;height:280px}
+      .pack{width:190px;height:250px;padding:18px 14px}
+      .pack h3{margin:32px 0 14px}
       .pack-badge svg{width:20px;height:20px}
       .pack-badge span{font-size:5.5px}
     }
+    @media(max-width:1024px){.floating-photo.photo-a{left:2%}.floating-photo.photo-b{right:2%}}
+    @media(max-width:600px){.floating-photo{display:none}.hero-art{min-height:340px}}
     @media(max-width:480px){
       .ingredient-grid,.team-grid{grid-template-columns:1fr}
       .hero h1{font-size:3.2rem}
-      .hero-art{min-height:280px}
-      .blob{width:220px;height:220px}
-      .pack{width:150px;height:190px}
-      .pack h3{font-size:20px}
+      .hero-art{min-height:300px}
+      .blob{width:240px;height:240px}
+      .pack{width:170px;height:226px;padding:16px 12px}
+      .pack small{font-size:7px}
+      .pack h3{font-size:22px;margin:24px 0 8px}
+      .pack p{font-size:9px;max-width:none}
+      .nav-cta{padding:8px 12px;font-size:11px}
+      .brand{font-size:13px}
       .problem .frame:first-child{min-height:240px}
       .ingredient{min-height:150px;padding:14px 12px}
       .step{min-height:140px;padding:16px}
@@ -411,6 +421,7 @@
       .pack-badge svg{width:18px;height:18px}
       .pack-badge span{font-size:5px}
     }
+    @media(max-width:400px){.hide-xs{display:none}}
     @media(max-width:360px){
       :root{--shadow:0 14px 35px rgba(22,75,55,.1)}
       nav{width:calc(100% - 16px);padding:8px 10px}
@@ -428,8 +439,9 @@
       .step{min-height:120px;padding:14px}
       .person{padding:12px}
       .frame{padding:14px}
-      .pack{width:130px;height:160px}
-      .pack h3{font-size:18px}
+      .pack{width:160px;height:216px}
+      .pack h3{font-size:20px;margin:20px 0 6px}
+      .actions{justify-content:center}
       .compare-table th,.compare-table td{padding:8px 10px;font-size:12px}
       .compare-table th{font-size:14px}
       .pack-badge{width:38px;height:38px;top:-6px;right:-6px}
@@ -452,7 +464,7 @@
       Nutri Andino Plus
     </a>
     <div class="navlinks"><a href="#historia">La historia</a><a href="#formula">La fórmula</a><a href="#nutricion">Nutrición</a><a href="#equipo">El equipo</a></div>
-    <a class="nav-cta" href="#conoce">Conoce el proyecto ↗</a>
+    <a class="nav-cta" href="#conoce">Conoce<span class="hide-xs"> el proyecto</span> ↗</a>
   </nav>
   <main id="inicio">
     <section class="hero">
@@ -600,7 +612,6 @@
         <div class="labels-head"><h3>Así se presenta</h3><span>Desliza →</span></div>
         <ul class="label-track">
           <li><button class="label-btn" type="button" data-full="assets/etiqueta-familiar-1kg.jpg" data-alt="Etiqueta formato familiar de 1 kg de Nutri Andino Plus"><img src="assets/etiqueta-familiar-1kg.jpg" alt="Etiqueta formato familiar de 1 kg" width="1024" height="1536" loading="lazy" /><span>Formato familiar · 1 kg</span></button></li>
-          <li><button class="label-btn" type="button" data-full="assets/etiqueta-informacion-nutricional.jpg" data-alt="Etiqueta con información nutricional, modo de uso y datos del ensayo"><img src="assets/etiqueta-informacion-nutricional.jpg" alt="Etiqueta con información nutricional y datos del ensayo" width="1024" height="1536" loading="lazy" /><span>Información y ensayo</span></button></li>
           <li><button class="label-btn" type="button" data-full="assets/etiqueta-500g.jpg" data-alt="Etiqueta del envase de 500 g de Nutri Andino Plus"><img src="assets/etiqueta-500g.jpg" alt="Etiqueta del envase de 500 g" width="1024" height="1536" loading="lazy" /><span>Presentación · 500 g</span></button></li>
         </ul>
       </div>
